@@ -2,6 +2,7 @@
 using asp_api_ledger.BL;
 using asp_api_ledger.DAL;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace asp_api_ledger
 {
@@ -14,7 +15,8 @@ namespace asp_api_ledger
 
             // Add services to the container.
             builder.Services.AddScoped<Logic>();
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using asp_api_ledger.DAL;
 using asp_api_ledger.Models;
@@ -25,7 +20,7 @@ namespace asp_api_ledger.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ledger>>> GetLedgers()
         {
-            return await _context.Ledgers.ToListAsync();
+            return await _context.Ledgers.Include(l => l.Users).ToListAsync();
         }
 
         // GET: api/Ledgers/5
