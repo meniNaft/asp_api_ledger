@@ -1,0 +1,6 @@
+@asp_api_ledger_HostAddress = http://localhost:5211
+
+GET {{asp_api_ledger_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
